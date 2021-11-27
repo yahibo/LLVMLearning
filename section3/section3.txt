@@ -1,3 +1,0 @@
-
-编译为可执行文件
-clang hello.c -o hello
