@@ -104,7 +104,7 @@ cd clang-xcode
 cmake -GXcode -DLLVM_ENNALBLE-PROJECTS=clang ../llvm-project/llvm
 
 
-7、开始编码
+7、开始编码，并编译成动态库HBPlugin.dylib
 ``` c++
 #include <iostream>
 #include "clang/AST/AST.h"
@@ -121,7 +121,7 @@ using namespace clang::ast_matchers;
 
 namespace HBPlugin {
     class HBConsumer : public ASTConsumer {
-        
+        cout << "HandlerTranslationUnit" <<endl;
     };
     class HBAction:public PluginASTAction {
     public:
@@ -136,9 +136,19 @@ X("HBPlugin", "The HBPlugin is my first clang-plugin");
 ```
 
 
+8、在Xcode项目中引入动态库
+Other C flags中添加标识
+-Xclang
+-load
+-Xclang
+/Users/hibo/LLVM/llvm-xcode/Debug/lib/hb_plugin
+-Xclang
+-add-plugin
+-Xclang
+hb_plugin
 
-
-
+9、修改编译器
+Compiler for C/C++ 修改为我们自己编译号的编译器
 
 
 
