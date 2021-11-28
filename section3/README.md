@@ -71,6 +71,3 @@ clang main.o sum.o -o sum
 
 
 
-
-
-
