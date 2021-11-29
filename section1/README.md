@@ -100,9 +100,10 @@ add_llvm_loadable_module(HBPlugin
 ```
 
 6、使用Xcode构建一个工程，用Xcode编写插件
+```
 cd clang-xcode
 cmake -GXcode -DLLVM_ENNALBLE-PROJECTS=clang ../llvm-project/llvm
-
+```
 
 7、开始编码，并编译成动态库HBPlugin.dylib
 ``` c++
@@ -137,17 +138,21 @@ X("HBPlugin", "The HBPlugin is my first clang-plugin");
 
 
 8、在Xcode项目中引入动态库
+
 Other C flags中添加标识
+```
 -Xclang
 -load
 -Xclang
-/Users/hibo/LLVM/llvm-xcode/Debug/lib/hb_plugin
+/Users/hibo/LLVM/llvm-xcode/Debug/lib/hb-plugin.dylib
 -Xclang
 -add-plugin
 -Xclang
-hb_plugin
+hb-plugin
+```
 
 9、修改编译器
+
 Compiler for C/C++ 修改为我们自己编译号的编译器
 
 
